@@ -51,8 +51,8 @@ jobs:
           key: ${{secrets.SSH_KEY}}
           host: ${{secrets.SSH_SERVER_IP}}
           username: ${{secrets.SSH_USER_NAME}}
-          source: "/build"
-          target: home/${{secrets.SSH_USER_NAME}}/app/action-hello/
+          source: "/build/*"
+          target: home/${{secrets.SSH_USER_NAME}}/app/action-hello/build
 
   # bydefault jobs run in parallel if we want to run one after another
   # we can use 'need'
