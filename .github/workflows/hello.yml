@@ -45,9 +45,6 @@ jobs:
           pwd
           ls
 
-      - name: prints path
-        run: echo Hello
-
       - name: Copy build folder via scp
         uses: appleboy/scp-action@master
         with:
