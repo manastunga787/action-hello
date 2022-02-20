@@ -45,8 +45,8 @@ jobs:
           pwd
           ls
 
-      - name: Print action path
-        run: echo ${{GITHUB_ACTION_PATH}}
+      # - name: Print action path
+      #   run: echo ${{GITHUB_ACTION_PATH}}
 
       - name: Copy build folder via scp
         uses: appleboy/scp-action@master
