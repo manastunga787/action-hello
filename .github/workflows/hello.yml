@@ -54,7 +54,7 @@ jobs:
           key: ${{secrets.SSH_KEY}}
           host: ${{secrets.SSH_SERVER_IP}}
           username: ${{secrets.SSH_USER_NAME}}
-          source: "${GITHUB_WORKSPACE}/build/*"
+          source: "/home/runner/work/action-hello/action-hello/build/*"
           target: "/home/${{secrets.SSH_USER_NAME}}/app/action-hello/build"
           rm: true
           strip_components: 3
@@ -69,4 +69,5 @@ jobs:
   #     - name: prints Hello
   #       run: echo "Hello from Mac"
 
+  # /home/runner/work/action-hello/action-hello
   # /home/runner/work/action-hello/action-hello
