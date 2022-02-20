@@ -1,0 +1,47 @@
+name: my script
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  lets-start:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node-version: [8.10.0]
+    steps:
+      - name: copying project files
+        uses: actions/checkout@v2.4.0
+
+      - name: Use Node.js ${{matrix.node-version}}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{matrix.node-version}}
+
+      - name: Install specific Yarn version 1.19.1
+        run: |
+          yarn policies set-version 1.19.1
+
+      - name: executes multiline script
+        run: |
+          node -v
+          npm -v
+          yarn -v
+
+      - name: list of files after checkout
+        run: |
+          pwd
+          ls -a
+        shell: bash
+
+  # bydefault jobs run in parallel if we want to run one after another
+  # we can use 'need'
+  # runs-on-mac-os:
+  #   runs-on: macos-latest
+  #   # this job wait for print-something job to finish
+  #   needs: [print-something]
+  #   steps:
+  #     - name: prints Hello
+  #       run: echo "Hello from Mac"
