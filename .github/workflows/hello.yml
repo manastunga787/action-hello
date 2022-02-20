@@ -56,6 +56,8 @@ jobs:
           username: ${{secrets.SSH_USER_NAME}}
           source: "/home/runner/work/action-hello/action-hello/build/*"
           target: "/home/${{secrets.SSH_USER_NAME}}/app/action-hello/build"
+          rm: true
+          strip_components: 3
 
   # bydefault jobs run in parallel if we want to run one after another
   # we can use 'need'
