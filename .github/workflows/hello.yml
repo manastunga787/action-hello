@@ -41,7 +41,7 @@ jobs:
         run: npm run build --if-present
 
       - name: Print variable
-        run: echo "Path -> ${{GITHUB_WORKSPACE}}"
+        run: echo "Path -> ${GITHUB_WORKSPACE}"
 
       - name: list of files after Build
         run: |
