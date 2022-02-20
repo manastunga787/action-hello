@@ -41,16 +41,16 @@ jobs:
       - name: Run Build
         run: npm run build --if-present
 
-      # - name: SSH Remote server
-      #   uses: appleboy/ssh-action@v0.1.4
-      #   with:
-      #     key: ${{secrets.SSH_KEY}}
-      #     host: ${{secrets.SSH_SERVER_IP}}
-      #     username: ${{secrets.SSH_USER_NAME}}
-      #     script: |
-      #       cd /home/${{secrets.SSH_USER_NAME}}/app/action-hello
-      #       git pull
-      #       npm install
+      - name: SSH Remote server
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          key: ${{secrets.SSH_KEY}}
+          host: ${{secrets.SSH_SERVER_IP}}
+          username: ${{secrets.SSH_USER_NAME}}
+          script: |
+            cd /home/${{secrets.SSH_USER_NAME}}/app/action-hello
+            git pull
+            npm install
 
   # bydefault jobs run in parallel if we want to run one after another
   # we can use 'need'
