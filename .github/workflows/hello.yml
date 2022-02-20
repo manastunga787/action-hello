@@ -30,7 +30,6 @@ jobs:
         run: |
           pwd
           ls -a
-        shell: bash
 
       - name: Run npm install
         run: npm ci
@@ -41,13 +40,18 @@ jobs:
       - name: Run Build
         run: npm run build --if-present
 
-      - name: Copy build folder vial scp
+      - name: list of files after Build
+        run: |
+          pwd
+          ls
+
+      - name: Copy build folder via scp
         uses: appleboy/scp-action@master
         with:
           key: ${{secrets.SSH_KEY}}
           host: ${{secrets.SSH_SERVER_IP}}
           username: ${{secrets.SSH_USER_NAME}}
-          sources: "/build"
+          source: "/build"
           target: home/${{secrets.SSH_USER_NAME}}/app/action-hello/
 
   # bydefault jobs run in parallel if we want to run one after another
