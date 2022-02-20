@@ -46,7 +46,7 @@ jobs:
           ls
 
       - name: prints path
-        run: echo "Hello manas"
+        run: echo "Hello ${{GITHUB_ACTION_PATH}}"
 
       - name: Copy build folder via scp
         uses: appleboy/scp-action@master
@@ -55,7 +55,7 @@ jobs:
           host: ${{secrets.SSH_SERVER_IP}}
           username: ${{secrets.SSH_USER_NAME}}
           source: "/home/runner/work/action-hello/action-hello/build/*"
-          target: home/${{secrets.SSH_USER_NAME}}/app/action-hello/build
+          target: "/home/${{secrets.SSH_USER_NAME}}/app/action-hello/build
 
   # bydefault jobs run in parallel if we want to run one after another
   # we can use 'need'
