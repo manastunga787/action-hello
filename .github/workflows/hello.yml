@@ -46,8 +46,7 @@ jobs:
           ls
 
       - name: prints path
-        run: |
-          echo Hello ${{GITHUB_ACTION_PATH}}
+        run: echo ${{GITHUB_ACTION_PATH}}
 
       - name: Copy build folder via scp
         uses: appleboy/scp-action@master
