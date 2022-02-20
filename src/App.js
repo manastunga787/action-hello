@@ -17,6 +17,7 @@ function App() {
         >
           Hello Manas
         </a>
+        <h2>This is new changes</h2>
       </header>
     </div>
   );
