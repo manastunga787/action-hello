@@ -54,7 +54,7 @@ jobs:
           key: ${{secrets.SSH_KEY}}
           host: ${{secrets.SSH_SERVER_IP}}
           username: ${{secrets.SSH_USER_NAME}}
-          source: "${GITHUB_WORKSPACE}/build/*"
+          source: "${{GITHUB_WORKSPACE}}/build/*"
           target: "/home/${{secrets.SSH_USER_NAME}}/app/action-hello/build"
           rm: true
           strip_components: 3
