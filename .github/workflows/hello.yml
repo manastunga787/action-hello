@@ -58,14 +58,13 @@ jobs:
           target: "/home/${{secrets.SSH_USER_NAME}}/app/action-hello/build"
           rm: true
           strip_components: 3
-          
+
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
+          host: ${{ secrets.SSH_SERVER_IP}}
+          username: ${{ secrets.SSH_USER_NAME }}
+          key: ${{secrets.SSH_KEY}}
           script: whoami
 
   # bydefault jobs run in parallel if we want to run one after another
