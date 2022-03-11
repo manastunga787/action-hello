@@ -56,6 +56,7 @@ jobs:
           username: ${{secrets.SSH_USER_NAME}}
           source: "/home/runner/work/action-hello/action-hello/build/*"
           target: "/home/${{secrets.SSH_USER_NAME}}/app/action-hello/build"
+          # target: "/home/${{secrets.SSH_USER_NAME}}/app/action-hello/build"
           rm: true
           strip_components: 3
 
