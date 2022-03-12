@@ -60,7 +60,7 @@ jobs:
           rm: true
           strip_components: 3
 
-      - name: executing remote ssh commands using password
+      - name: executing ssh commands using password
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_SERVER_IP}}
