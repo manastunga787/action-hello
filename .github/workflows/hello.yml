@@ -66,7 +66,9 @@ jobs:
           host: ${{ secrets.SSH_SERVER_IP}}
           username: ${{ secrets.SSH_USER_NAME }}
           key: ${{secrets.SSH_KEY}}
-          script: node -v
+          script: |
+            node -v
+            nodmon -v
 
   # bydefault jobs run in parallel if we want to run one after another
   # we can use 'need'
