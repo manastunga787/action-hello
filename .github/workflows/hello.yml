@@ -68,7 +68,6 @@ jobs:
           key: ${{secrets.SSH_KEY}}
           script: |
             node -v
-            nodemon -v
 
   # bydefault jobs run in parallel if we want to run one after another
   # we can use 'need'
