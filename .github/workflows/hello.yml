@@ -88,6 +88,7 @@ jobs:
           username: ${{ secrets.SSH_USER_NAME }}
           key: ${{secrets.SSH_KEY}}
           script: |
+            sudo rm -rf /var/www/hackheap.online/html/*
             sudo mv /home/manas/frontend/html /var/www/hackheap.online
 
       - name: executing ssh commands using password
