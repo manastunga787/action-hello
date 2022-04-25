@@ -48,17 +48,47 @@ jobs:
           pwd
           ls
 
+      # - name: Copy build folder via scp
+      #   uses: appleboy/scp-action@master
+      #   with:
+      #     key: ${{secrets.SSH_KEY}}
+      #     host: ${{secrets.SSH_SERVER_IP}}
+      #     username: ${{secrets.SSH_USER_NAME}}
+      #     source: "/home/runner/work/action-hello/action-hello/build/*"
+      #     target: "/var/www/hackheap.online/html"
+      #     # target: "/home/${{secrets.SSH_USER_NAME}}/app/action-hello/build"
+      #     rm: true
+      #     strip_components: 3
+
+      - name: executing ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_SERVER_IP}}
+          username: ${{ secrets.SSH_USER_NAME }}
+          key: ${{secrets.SSH_KEY}}
+          script: |
+            mkdir -p /home/manas/frontend/html
+
       - name: Copy build folder via scp
         uses: appleboy/scp-action@master
         with:
           key: ${{secrets.SSH_KEY}}
           host: ${{secrets.SSH_SERVER_IP}}
           username: ${{secrets.SSH_USER_NAME}}
-          source: "/home/runner/work/action-hello/action-hello/build/*"
-          target: "/var/www/hackheap.online/html"
+          source: "build/*"
+          target: "/home/manas/frontend/html"
           # target: "/home/${{secrets.SSH_USER_NAME}}/app/action-hello/build"
           rm: true
           strip_components: 3
+
+      - name: move html dir to hackheap.online/html
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_SERVER_IP}}
+          username: ${{ secrets.SSH_USER_NAME }}
+          key: ${{secrets.SSH_KEY}}
+          script: |
+            sudo mv /home/manas/frontend/html /var/www/hackheap.online
 
       - name: executing ssh commands using password
         uses: appleboy/ssh-action@master
