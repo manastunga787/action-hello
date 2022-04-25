@@ -47,6 +47,7 @@ jobs:
         run: |
           pwd
           ls
+          ls ./build
 
       # - name: Copy build folder via scp
       #   uses: appleboy/scp-action@master
@@ -89,7 +90,7 @@ jobs:
           key: ${{secrets.SSH_KEY}}
           script: |
             sudo rm -rf /var/www/hackheap.online/html/*
-            sudo mv /home/manas/frontend/html /var/www/hackheap.online
+      # sudo mv /home/manas/frontend/html /var/www/hackheap.online
 
   # bydefault jobs run in parallel if we want to run one after another
   # we can use 'need'
