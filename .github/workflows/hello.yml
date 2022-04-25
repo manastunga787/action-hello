@@ -91,16 +91,6 @@ jobs:
             sudo rm -rf /var/www/hackheap.online/html/*
             sudo mv /home/manas/frontend/html /var/www/hackheap.online
 
-      - name: executing ssh commands using password
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_SERVER_IP}}
-          username: ${{ secrets.SSH_USER_NAME }}
-          key: ${{secrets.SSH_KEY}}
-          script: |
-            node -v
-            pm2 -v
-
   # bydefault jobs run in parallel if we want to run one after another
   # we can use 'need'
   # runs-on-mac-os:
