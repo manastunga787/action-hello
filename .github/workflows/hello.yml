@@ -89,7 +89,7 @@ jobs:
           key: ${{secrets.SSH_KEY}}
           script: |
             sudo rm -rf /var/www/hackheap.online/html/*
-      # sudo mv /home/manas/frontend/html /var/www/hackheap.online
+            sudo cp -a /home/manas/frontend/html/build/. /var/www/hackheap.online/html/
 
   # bydefault jobs run in parallel if we want to run one after another
   # we can use 'need'
